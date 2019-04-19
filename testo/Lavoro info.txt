@@ -1,0 +1,16 @@
+Server (a console):
+- lettura del file html
+- attende una connessione
+- thread per gesitre più client con Runnable
+- tante pagine web (semplici) fatte da Pelle
+- manda dei byte usando DataOutputStream
+
+Client (GUI):
+- connettere a server
+- interfaccia grafica
+- spezzettare html della pagina web
+- richiedere invio della pagina
+- interpretare i byte mandati dal server trasformando in stringa e facendo robe belle
+
+
+client chiede a server la pagina e il server la manda al client
