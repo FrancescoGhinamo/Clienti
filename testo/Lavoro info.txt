@@ -4,6 +4,7 @@ Server (a console):
 - thread per gesitre più client con Runnable
 - tante pagine web (semplici) fatte da Pelle
 - manda dei byte usando DataOutputStream
+- magari provo a usare patter factory e singleton...
 
 Client (GUI):
 - connettere a server
