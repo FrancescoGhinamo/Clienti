@@ -1,4 +1,4 @@
-package gestione;
+package backend;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -8,12 +8,38 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import frontend.InterfacciaGraficaCliente;
+
 public class Clients {
 	private Socket server=null;
 	private static final int port =8080;
 	private DataInputStream input;
 	private DataOutputStream output;
 	
+	private InterfacciaGraficaCliente i;
+	
+	public void comunica()
+	{
+		//messaggio da inviare al server cioe l url
+		String messaggio = i.getD().getTestotxt().getText();
+		try {
+			//invio convertire in byteeee
+			output.writeBytes(messaggio);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//server genera la pagina e mi restitusce la roba(gia convertita oppure solo la pagina come vuoi tu :)
+		try {
+			
+			String ricevuta =input.readLine();
+			i.setMessaggioRicevuto(ricevuta);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public Socket connetti()
 	{
 		try {
@@ -40,6 +66,7 @@ public class Clients {
 	{
 		Clients c = new Clients();
 		c.connetti();
+		c.comunica();
 	}
 	
 
