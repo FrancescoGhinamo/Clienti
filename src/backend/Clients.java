@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 
 import frontend.InterfacciaGraficaCliente;
 
-public class Clients {
+public class Clients implements Runnable {
 	private Socket server=null;
 	private static final int port =8080;
 	private DataInputStream input;
@@ -18,26 +18,43 @@ public class Clients {
 	
 	private InterfacciaGraficaCliente i;
 	
+	public InterfacciaGraficaCliente getI() {
+		return i;
+	}
+	public void setI(InterfacciaGraficaCliente i) {
+		this.i = i;
+	}
+	
+	public Clients() {
+		super();
+		i= new InterfacciaGraficaCliente();
+		
+	}
 	public void comunica()
 	{
 		//messaggio da inviare al server cioe l url
-		String messaggio = i.getD().getTestotxt().getText();
-		try {
-			//invio convertire in byteeee
-			output.writeBytes(messaggio);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(i.getD().getTestotxt()!=null)
+		{
+			System.out.println("ciao");
+			String messaggio = i.getD().getTestotxt().getText();
+			try {
+				//invio convertire in byteeee
+				output.writeBytes(messaggio);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//server genera la pagina e mi restitusce la roba(gia convertita oppure solo la pagina come vuoi tu :)
+			try {
+				
+				String ricevuta =input.readLine();
+				i.setMessaggioRicevuto(ricevuta);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		//server genera la pagina e mi restitusce la roba(gia convertita oppure solo la pagina come vuoi tu :)
-		try {
-			
-			String ricevuta =input.readLine();
-			i.setMessaggioRicevuto(ricevuta);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 	public Socket connetti()
@@ -66,7 +83,25 @@ public class Clients {
 	{
 		Clients c = new Clients();
 		c.connetti();
-		c.comunica();
+		while(c.getI().getD()==null)
+		{
+			System.out.println("mm");
+		}
+		if(c.getI().getD().getTestotxt().getText()!=null)
+		{
+			System.out.println("ciao");
+			c.comunica();
+		}	
+		
+		
+	}
+	@Override
+	public void run() {
+		while(true) {
+			
+		
+		}
+		
 	}
 	
 

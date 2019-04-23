@@ -39,6 +39,12 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 	public void setMessaggioRicevuto(String messaggioRicevuto) {
 		this.messaggioRicevuto = messaggioRicevuto;
 	}
+	public InterfacciaGraficaCliente()
+	{
+		setExtendedState(MAXIMIZED_BOTH);
+		initComponents();
+		setVisible(true);
+	}
 	public void initComponents()
 	{
 		indirizzi = new ArrayList<String>();
@@ -58,9 +64,16 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 		if(e.getSource().equals(inserireIndirizzo))
 		{
 			d = new Dialogo(this,"Programma",true);
+			d.setVisible(true);
 			//caricaeLetturaPagina(d.getTestotxt().getText());
 		}
 		
+	}
+	public JTextArea getTesto() {
+		return testo;
+	}
+	public void setTesto(JTextArea testo) {
+		this.testo = testo;
 	}
 	public Dialogo getD() {
 		return d;
