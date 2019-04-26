@@ -65,7 +65,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 		{
 			d = new Dialogo(this,"Programma",true);
 			d.setVisible(true);
-			//caricaeLetturaPagina(d.getTestotxt().getText());
+			
 		}
 		
 	}
