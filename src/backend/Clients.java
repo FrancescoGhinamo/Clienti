@@ -85,22 +85,25 @@ public class Clients implements Runnable {
 	public static void main(String[] args)
 	{
 		Clients c = new Clients();
-		c.connetti();
-		while(c.getI().getD()==null)
-		{
-			System.out.println("mm");
-		}
-		if(c.getI().getD().getTestotxt().getText()!=null)
-		{
-			System.out.println("ciao");
-			c.comunica();
-		}	
+		Thread t = new Thread(c);
+		t.start();
+			
 		
 		
 	}
 	@Override
 	public void run() {
 		while(true) {
+			
+			this.connetti();
+			if(this.i.getD()!=null)
+			{
+			if(this.getI().getD().getTestotxt().getText()!=null)
+			{
+				System.out.println("ciao");
+				this.comunica();
+			}	
+			}
 			
 		
 		}
