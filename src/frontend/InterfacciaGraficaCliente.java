@@ -43,7 +43,9 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 	{
 		setExtendedState(MAXIMIZED_BOTH);
 		initComponents();
+		messaggioRicevuto = "";
 		setVisible(true);
+		
 	}
 	public void initComponents()
 	{
@@ -65,6 +67,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 		{
 			d = new Dialogo(this,"Programma",true);
 			d.setVisible(true);
+			messaggioRicevuto = d.getTestotxt().getText();
 			
 		}
 		
