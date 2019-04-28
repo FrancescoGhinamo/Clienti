@@ -14,23 +14,23 @@ import server.backend.service.serverService.ByteServerServiceFactory;
 
 public class Clients implements Runnable {
 	private Socket server=null;
-	private static final int port =8080;
+	private static final int port =80;
 	private DataInputStream input;
 	private DataOutputStream output;
-	
+
 	private InterfacciaGraficaCliente i;
-	
+
 	public InterfacciaGraficaCliente getI() {
 		return i;
 	}
 	public void setI(InterfacciaGraficaCliente i) {
 		this.i = i;
 	}
-	
+
 	public Clients() {
 		super();
 		i= new InterfacciaGraficaCliente();
-		
+
 	}
 	public void comunica()
 	{
@@ -51,27 +51,27 @@ public class Clients implements Runnable {
 			for(int i = 0; i < ris.length; i++) {
 				chars[i] = (char) ris[i];
 			}
-			
+
 			//File file = null;
 			String indirizzo = String.valueOf(chars);
 			i.getTesto().setText(indirizzo);
-			
+
 		}
-		
-		
+
+
 	}
 	public Socket connetti()
 	{
 		try {
 			System.out.println("Provo a connettermi ....");
 			Socket server = new Socket(InetAddress.getLocalHost(),port);
-			
+
 			System.out.println("Connesso");
 			input = new DataInputStream(server.getInputStream());
 			output=new DataOutputStream(server.getOutputStream());
-			
-			
-			
+
+
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Host sconosciuto");
@@ -87,28 +87,35 @@ public class Clients implements Runnable {
 		Clients c = new Clients();
 		Thread t = new Thread(c);
 		t.start();
-			
-		
-		
+
+
+
 	}
 	@Override
 	public void run() {
+		this.connetti();
+
 		while(true) {
-			
-			this.connetti();
-			if(this.i.getD()!=null)
-			{
-			if(this.getI().getD().getTestotxt().getText()!=null)
-			{
-				System.out.println("ciao");
-				this.comunica();
-			}	
+
+			if(this.getI() != null) {
+
+//				if(this.getI().getD() != null) {
+					
+					if(!this.getI().getMessaggioRicevuto().equals(""))
+					{
+						System.out.println("ciao");
+						this.comunica();
+					}	
+//				}
+				
+				
 			}
-			
-		
+
+
 		}
-		
+
+
 	}
-	
+
 
 }
