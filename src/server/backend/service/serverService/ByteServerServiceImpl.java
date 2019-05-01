@@ -2,6 +2,7 @@ package server.backend.service.serverService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -60,7 +61,18 @@ public class ByteServerServiceImpl implements IByteServerService {
 
 	@Override
 	public void inviaByte(byte[] bytes, Socket s) {
-		//IMPLEMENTARE
+		DataOutputStream dos = null;
+		try {
+			dos = new DataOutputStream(s.getOutputStream());
+			
+			dos.write(bytes);
+			dos.flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 
