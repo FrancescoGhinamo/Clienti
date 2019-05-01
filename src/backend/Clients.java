@@ -51,13 +51,13 @@ public class Clients implements Runnable {
 				e.printStackTrace();
 			}
 			byte[] ris=ByteServerServiceFactory.getByteServerService().leggiByteIngresso(server);
-			char[] chars = new char[ris.length];
+			/*char[] chars = new char[ris.length];
 			for(int i = 0; i < ris.length; i++) {
 				chars[i] = (char) ris[i];
 			}
 
-			//File file = null;
-			String indirizzo = String.valueOf(chars);
+			*/
+			String indirizzo = new String(ris);
 			i.getTesto().setText(indirizzo);
 
 		}
