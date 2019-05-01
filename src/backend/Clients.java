@@ -71,7 +71,7 @@ public class Clients implements Runnable {
 			//System.out.println(i.getMessaggioRicevuto());
 			String giusto=i.getMessaggioRicevuto().substring(i.getMessaggioRicevuto().indexOf(""),i.getMessaggioRicevuto().indexOf("/"));
 			
-			Socket server = new Socket(giusto,port);
+			server = new Socket(giusto,port);
 			
 			System.out.println("Connesso");
 			input = new DataInputStream(server.getInputStream());
