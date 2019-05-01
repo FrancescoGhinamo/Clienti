@@ -35,13 +35,16 @@ public class Clients implements Runnable {
 	public void comunica()
 	{
 		//messaggio da inviare al server cioe l url
-		if(i.getD().getTestotxt()!=null)
+		if(i.getD().getTestotxt().getText()!=null)
 		{
 			
 			String messaggio = i.getD().getTestotxt().getText();
+			//System.out.println(messaggio);
+			String me=messaggio.substring(messaggio.indexOf("//"), messaggio.indexOf(""));
+			System.out.println(me);
 			try {
 				//invio convertire in byteeee
-				output.writeBytes(messaggio);
+				output.writeBytes(me);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -64,8 +67,9 @@ public class Clients implements Runnable {
 	{
 		try {
 			System.out.println("Provo a connettermi ....");
-			System.out.println(i.getMessaggioRicevuto());
+			//System.out.println(i.getMessaggioRicevuto());
 			String giusto=i.getMessaggioRicevuto().substring(i.getMessaggioRicevuto().indexOf(""),i.getMessaggioRicevuto().indexOf("/"));
+			
 			Socket server = new Socket(giusto,port);
 			
 			System.out.println("Connesso");
