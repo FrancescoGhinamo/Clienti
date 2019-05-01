@@ -21,7 +21,6 @@ import backend.Clients;
 
 public class InterfacciaGraficaCliente extends JFrame implements ActionListener {
 
-	private ArrayList<String> indirizzi;
 	private JMenu menu;
 	private JMenuItem inserireIndirizzo;
 	
@@ -47,7 +46,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 	}
 	public void initComponents()
 	{
-		indirizzi = new ArrayList<String>();
+		
 		menu = new JMenu("Menu");
 		inserireIndirizzo = new JMenuItem("Aprire Pagina");
 		inserireIndirizzo.addActionListener(this);
@@ -60,7 +59,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		if(e.getSource().equals(inserireIndirizzo))
 		{
 			d = new Dialogo(this,"Programma",true);

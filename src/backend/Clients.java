@@ -42,7 +42,7 @@ public class Clients implements Runnable {
 			String messaggio = i.getD().getTestotxt().getText();
 			//System.out.println(messaggio);
 			
-			String me =messaggio.substring(messaggio.indexOf("/"));
+			String me =messaggio.substring(messaggio.indexOf("//y"));
 			System.out.println(me);
 			try {
 				//invio convertire in byteeee
