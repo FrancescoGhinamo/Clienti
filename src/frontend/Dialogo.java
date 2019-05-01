@@ -15,6 +15,15 @@ public class Dialogo extends JDialog implements ActionListener{
 	private JLabel testo;
 	
 	private JButton conferma;
+	
+	private String test;
+	
+	public String getTest() {
+		return test;
+	}
+	public void setTest(String test) {
+		this.test = test;
+	}
 	public Dialogo (JFrame owner, String title, boolean model)
 	{
 		super(owner,title,model);
@@ -38,6 +47,7 @@ public class Dialogo extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(conferma))
 		{
+			test=testotxt.getText();
 			this.dispose();
 		}
 		

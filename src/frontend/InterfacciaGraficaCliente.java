@@ -29,9 +29,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 	
 	private Dialogo d ;
 	
-	private Clients cliente;
-	
-	private String messaggioRicevuto;
+	private volatile String messaggioRicevuto;
 
 	public String getMessaggioRicevuto() {
 		return messaggioRicevuto;
@@ -67,7 +65,7 @@ public class InterfacciaGraficaCliente extends JFrame implements ActionListener 
 		{
 			d = new Dialogo(this,"Programma",true);
 			d.setVisible(true);
-			messaggioRicevuto = d.getTestotxt().getText();
+			messaggioRicevuto = d.getTest();
 			
 		}
 		

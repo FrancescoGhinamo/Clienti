@@ -64,8 +64,10 @@ public class Clients implements Runnable {
 	{
 		try {
 			System.out.println("Provo a connettermi ....");
-			Socket server = new Socket(InetAddress.getLocalHost(),port);
-
+			System.out.println(i.getMessaggioRicevuto());
+			String giusto=i.getMessaggioRicevuto().substring(i.getMessaggioRicevuto().indexOf(""),i.getMessaggioRicevuto().indexOf("/"));
+			Socket server = new Socket(giusto,port);
+			
 			System.out.println("Connesso");
 			input = new DataInputStream(server.getInputStream());
 			output=new DataOutputStream(server.getOutputStream());
@@ -93,7 +95,7 @@ public class Clients implements Runnable {
 	}
 	@Override
 	public void run() {
-		this.connetti();
+		
 
 		while(true) {
 
@@ -101,9 +103,10 @@ public class Clients implements Runnable {
 
 //				if(this.getI().getD() != null) {
 					
-					if(!this.getI().getMessaggioRicevuto().equals(""))
+					if(this.getI().getMessaggioRicevuto()!="")
 					{
-						System.out.println("ciao");
+						this.connetti();
+						
 						this.comunica();
 					}	
 //				}
