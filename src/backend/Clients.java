@@ -37,7 +37,7 @@ public class Clients implements Runnable {
 		//messaggio da inviare al server cioe l url
 		if(i.getD().getTestotxt()!=null)
 		{
-			System.out.println("ciao");
+			
 			String messaggio = i.getD().getTestotxt().getText();
 			try {
 				//invio convertire in byteeee
