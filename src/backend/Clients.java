@@ -42,7 +42,7 @@ public class Clients implements Runnable {
 			String messaggio = i.getD().getTestotxt().getText();
 			//System.out.println(messaggio);
 			
-			String me =messaggio.substring(9);
+			String me =messaggio.substring(messaggio.indexOf("/"));
 			System.out.println(me);
 			try {
 				//invio convertire in byteeee
@@ -110,7 +110,7 @@ public class Clients implements Runnable {
 
 //				if(this.getI().getD() != null) {
 					
-					if(this.getI().getMessaggioRicevuto()!=""&&(this.getI().getMessaggioRicevuto()!=indirizzocorrente))
+					if((this.getI().getMessaggioRicevuto()!="")&&(this.getI().getMessaggioRicevuto()!=indirizzocorrente))
 					{
 						indirizzocorrente=this.getI().getMessaggioRicevuto();
 						this.connetti();
