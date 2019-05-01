@@ -19,6 +19,7 @@ public class Clients implements Runnable {
 	private DataOutputStream output;
 
 	private InterfacciaGraficaCliente i;
+	private String indirizzocorrente;
 
 	public InterfacciaGraficaCliente getI() {
 		return i;
@@ -58,6 +59,7 @@ public class Clients implements Runnable {
 
 			*/
 			String indirizzo = new String(ris);
+			i.getTesto().setText("");
 			i.getTesto().setText(indirizzo);
 
 		}
@@ -108,11 +110,13 @@ public class Clients implements Runnable {
 
 //				if(this.getI().getD() != null) {
 					
-					if(this.getI().getMessaggioRicevuto()!="")
+					if(this.getI().getMessaggioRicevuto()!=""&&(this.getI().getMessaggioRicevuto()!=indirizzocorrente))
 					{
+						indirizzocorrente=this.getI().getMessaggioRicevuto();
 						this.connetti();
 						
 						this.comunica();
+						
 					}	
 //				}
 				
